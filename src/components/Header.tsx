@@ -2,9 +2,7 @@ import { useState } from "react";
 import SearchForm from "./SearchForm";
 import { Link, useNavigate } from "react-router-dom";
 
-type Props = {};
-
-export default function Header({}: Props) {
+export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const navigate = useNavigate();
 
