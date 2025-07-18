@@ -47,17 +47,8 @@ export default function Home() {
       .finally(() => setLoading(false));
   }, []);
 
-  // Search handler passed to layout
-  const handleSearchResult = (result: any[] | null, query?: string) => {
-    setLoading(true);
-    setMeals(result);
-    setError(result ? null : "No meals found for your search.");
-    setHeading(query?.trim() ? `${query.trim()} meals` : "Random Meals");
-    setLoading(false);
-  };
-
   return (
-    <MaineLayout onSearchResult={handleSearchResult} setLoading={setLoading}>
+    <MaineLayout>
       <div className="flex justify-center items-center min-h-screen bg-gray-900 w-full">
         <div className="w-full max-w-6xl px-4">
           <h2 className="text-2xl text-white text-center py-4">{heading}</h2>
