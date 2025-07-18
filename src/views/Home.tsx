@@ -24,8 +24,7 @@ async function fetchRandomMeals(count = 6) {
 }
 
 export default function Home() {
-  const currentUrl = useLocation().pathname;
-  console.log("Current URL:", currentUrl);
+  console.log("API URL:", import.meta.env.VITE_MEALDB_API);
 
   const [meals, setMeals] = useState<any[] | null>(null);
   const [error, setError] = useState<string | null>(null);
