@@ -54,13 +54,15 @@ export default function MealDetails() {
   return (
     <MaineLayout>
       <div className="max-w-3xl mx-auto bg-gray-800 rounded-lg shadow-lg p-8 mt-8">
-        <div className="flex flex-col md:flex-row gap-8">
+        <div className="clearfix">
+          {" "}
+          {/* To contain floated elements */}
           <img
             src={meal.strMealThumb}
             alt={meal.strMeal}
-            className="w-full md:w-80 h-64 object-cover rounded-lg"
+            className="w-80 h-64 object-cover rounded-lg float-left mr-6 mb-4"
           />
-          <div className="flex-1">
+          <div>
             <h2 className="text-3xl font-bold text-white mb-4">
               {meal.strMeal}
             </h2>
