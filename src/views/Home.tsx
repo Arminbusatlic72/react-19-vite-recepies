@@ -1,32 +1,38 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 
 import Card from "../components/Card";
 import MaineLayout from "../layouts/MaineLayout";
 import Spinner from "../components/Spinner";
+import { useMeals } from "../context/MealContext";
 
 const API_BASE = import.meta.env.VITE_MEALDB_API;
 
 async function fetchRandomMeals(count = 6) {
-  try {
-    const requests = Array.from({ length: count }).map(() =>
-      fetch(`${API_BASE}/random.php`).then((res) => {
-        if (!res.ok) throw new Error("Network response was not ok");
-        return res.json();
-      })
-    );
-    const results = await Promise.all(requests);
-    return results.map((r) => r.meals?.[0]).filter(Boolean);
-  } catch (error) {
-    console.error("Failed to fetch random meals:", error);
-    throw error;
-  }
+  const requests = Array.from({ length: count }).map(() =>
+    fetch(`${API_BASE}/random.php`).then((res) => {
+      if (!res.ok) throw new Error("Network response was not ok");
+      return res.json();
+    })
+  );
+  const results = await Promise.all(requests);
+  return results.map((r) => r.meals?.[0]).filter(Boolean);
 }
 
 export default function Home() {
-  const [meals, setMeals] = useState<any[] | null>(null);
-  const [error, setError] = useState<string | null>(null);
-  const [heading, setHeading] = useState<string>("Random Meals");
-  const [loading, setLoading] = useState<boolean>(false);
+  const currentUrl = useLocation().pathname;
+  console.log("Current URL:", currentUrl);
+
+  const {
+    meals,
+    loading,
+    error,
+    heading,
+    setMeals,
+    setLoading,
+    setError,
+    setHeading
+  } = useMeals();
 
   useEffect(() => {
     setLoading(true);

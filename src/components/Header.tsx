@@ -17,6 +17,7 @@ export default function Header() {
         <Link to="/" className="text-white text-2xl font-bold">
           Maine Cuisine
         </Link>
+
         {/* Hamburger Icon */}
         <button
           className="md:hidden text-gray-300 focus:outline-none"
@@ -47,29 +48,41 @@ export default function Header() {
             )}
           </svg>
         </button>
+
         {/* Desktop Menu */}
         <ul className="hidden md:flex space-x-6">
           <li>
-            <a href="/" className="text-gray-300 hover:text-white transition">
+            <Link to="/" className="text-gray-300 hover:text-white transition">
               Home
-            </a>
+            </Link>
           </li>
           <li>
-            <a
-              href="/ingredients"
+            <Link
+              to="/ingredients"
               className="text-gray-300 hover:text-white transition"
             >
               Ingredients
-            </a>
+            </Link>
+          </li>
+          <li>
+            <Link
+              to="/signup"
+              className="text-gray-300 hover:text-white transition"
+            >
+              Signup
+            </Link>
           </li>
         </ul>
-        {/* Mobile Menu */}
+
+        {/* Mobile Overlay */}
         <div
           className={`fixed inset-0 bg-black bg-opacity-40 z-20 transition-opacity duration-300 ${
             menuOpen ? "block md:hidden" : "hidden"
           }`}
           onClick={() => setMenuOpen(false)}
         />
+
+        {/* Mobile Menu */}
         <ul
           className={`absolute top-full left-0 w-full bg-gray-800 flex flex-col items-center md:hidden z-30 transition-all duration-300 ${
             menuOpen
@@ -78,34 +91,35 @@ export default function Header() {
           }`}
         >
           <li className="w-full">
-            <a
-              href="/"
+            <Link
+              to="/"
               className="block px-4 py-3 text-gray-300 hover:text-white transition w-full text-center"
               onClick={() => setMenuOpen(false)}
             >
               Home
-            </a>
+            </Link>
           </li>
           <li className="w-full">
-            <a
-              href="/ingredients"
+            <Link
+              to="/ingredients"
               className="block px-4 py-3 text-gray-300 hover:text-white transition w-full text-center"
               onClick={() => setMenuOpen(false)}
             >
               Ingredients
-            </a>
+            </Link>
           </li>
           <li className="w-full">
-            <a
-              href="#"
+            <Link
+              to="/signup"
               className="block px-4 py-3 text-gray-300 hover:text-white transition w-full text-center"
               onClick={() => setMenuOpen(false)}
             >
-              About
-            </a>
+              Signup
+            </Link>
           </li>
         </ul>
       </nav>
+
       <h1 className="text-4xl font-bold text-center text-white py-8">
         Welcome to Maine Cuisine
       </h1>
