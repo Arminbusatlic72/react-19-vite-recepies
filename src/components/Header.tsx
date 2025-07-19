@@ -1,6 +1,6 @@
 import { useState } from "react";
 import SearchForm from "./SearchForm";
-import { Link, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -11,12 +11,17 @@ export default function Header() {
     navigate(`/search/${encodeURIComponent(query)}`);
   };
 
+  const linkClass = ({ isActive }: { isActive: boolean }) =>
+    `text-gray-300 hover:text-white transition ${
+      isActive ? "text-indigo-400 font-semibold" : ""
+    }`;
+
   return (
     <header>
       <nav className="bg-gray-800 px-6 py-4 flex items-center justify-between relative">
-        <Link to="/" className="text-white text-2xl font-bold">
+        <NavLink to="/" className="text-white text-2xl font-bold">
           Maine Cuisine
-        </Link>
+        </NavLink>
 
         {/* Hamburger Icon */}
         <button
@@ -52,25 +57,19 @@ export default function Header() {
         {/* Desktop Menu */}
         <ul className="hidden md:flex space-x-6">
           <li>
-            <Link to="/" className="text-gray-300 hover:text-white transition">
+            <NavLink to="/" className={linkClass} end>
               Home
-            </Link>
+            </NavLink>
           </li>
           <li>
-            <Link
-              to="/ingredients"
-              className="text-gray-300 hover:text-white transition"
-            >
+            <NavLink to="/ingredients" className={linkClass}>
               Ingredients
-            </Link>
+            </NavLink>
           </li>
           <li>
-            <Link
-              to="/signup"
-              className="text-gray-300 hover:text-white transition"
-            >
+            <NavLink to="/signup" className={linkClass}>
               Signup
-            </Link>
+            </NavLink>
           </li>
         </ul>
 
@@ -91,31 +90,44 @@ export default function Header() {
           }`}
         >
           <li className="w-full">
-            <Link
+            <NavLink
               to="/"
-              className="block px-4 py-3 text-gray-300 hover:text-white transition w-full text-center"
+              className={({ isActive }) =>
+                `block px-4 py-3 w-full text-center text-gray-300 hover:text-white transition ${
+                  isActive ? "text-indigo-400 font-semibold" : ""
+                }`
+              }
+              end
               onClick={() => setMenuOpen(false)}
             >
               Home
-            </Link>
+            </NavLink>
           </li>
           <li className="w-full">
-            <Link
+            <NavLink
               to="/ingredients"
-              className="block px-4 py-3 text-gray-300 hover:text-white transition w-full text-center"
+              className={({ isActive }) =>
+                `block px-4 py-3 w-full text-center text-gray-300 hover:text-white transition ${
+                  isActive ? "text-indigo-400 font-semibold" : ""
+                }`
+              }
               onClick={() => setMenuOpen(false)}
             >
               Ingredients
-            </Link>
+            </NavLink>
           </li>
           <li className="w-full">
-            <Link
+            <NavLink
               to="/signup"
-              className="block px-4 py-3 text-gray-300 hover:text-white transition w-full text-center"
+              className={({ isActive }) =>
+                `block px-4 py-3 w-full text-center text-gray-300 hover:text-white transition ${
+                  isActive ? "text-indigo-400 font-semibold" : ""
+                }`
+              }
               onClick={() => setMenuOpen(false)}
             >
               Signup
-            </Link>
+            </NavLink>
           </li>
         </ul>
       </nav>
