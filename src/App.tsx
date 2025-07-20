@@ -6,6 +6,7 @@ import MealsByIngredient from "./views/MealsByIngredient";
 import MealDetails from "./views/MealDetails";
 import SearchResults from "./views/SearchResults";
 import Signup from "./views/Signup";
+import SignupForm from "./views/FormHook";
 
 import ProtectedContent from "./components/ProtectedContent";
 import { AuthProvider } from "./context/AuthContext";
@@ -20,6 +21,7 @@ function App() {
           <Route path="/ingredients" element={<Ingredients />} />
           <Route path="/ingredient/:name" element={<MealsByIngredient />} />
           <Route path="/signup" element={<Signup />} />
+          <Route path="/form-hook" element={<SignupForm />} />
           <Route path="/meal/:id" element={<MealDetails />} />
           <Route path="/search/:query" element={<SearchResults />} />
           <Route path="/protected" element={<ProtectedContent />} />

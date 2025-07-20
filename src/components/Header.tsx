@@ -71,6 +71,11 @@ export default function Header() {
               Signup
             </NavLink>
           </li>
+          <li>
+            <NavLink to="/form-hook" className={linkClass}>
+              Signup with Form Hook
+            </NavLink>
+          </li>
         </ul>
 
         {/* Mobile Overlay */}
@@ -127,6 +132,11 @@ export default function Header() {
               onClick={() => setMenuOpen(false)}
             >
               Signup
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/form-hook" className={linkClass}>
+              Signup with Form Hook
             </NavLink>
           </li>
         </ul>
